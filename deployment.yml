@@ -26,7 +26,14 @@ jobs:
 
  - name: every30minutes
    targetName: dev
-   schedule: '*/5 * * * *' # The example will run every 30 minutes. Note that the cron string is quoted as otherwise it will be treated as invalid alias node (see https://yaml.org/spec/1.2/spec.html#*%20alias// for details)
+   schedule: '*/5 * * * *' 
    steps:
      - name: run models
        command: dbt run --models my_first_dbt_model my_second_dbt_model
+
+ - name: 'Metabase Harvest Import'
+   targetName: dev
+   schedule: '*/5 * * * *' 
+   steps:
+     - name: run models
+       command: dbt run --models metabase/harvests.sql
