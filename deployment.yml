@@ -30,4 +30,4 @@ jobs:
    schedule: '*/30 * * * *' 
    steps:
      - name: run models
-       command: dbt run --models metabase/harvests.sql
+       command: dbt run --models harvests.sql
