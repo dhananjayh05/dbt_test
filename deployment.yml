@@ -24,16 +24,10 @@ jobs:
 #      - name: run models
 #        command: dbt run
 
- - name: every30minutes
-   targetName: dev
-   schedule: '*/5 * * * *' 
-   steps:
-     - name: run models
-       command: dbt run --models my_first_dbt_model my_second_dbt_model
 
  - name: 'Metabase Harvest Import'
    targetName: dev
-   schedule: '*/5 * * * *' 
+   schedule: '*/30 * * * *' 
    steps:
      - name: run models
        command: dbt run --models metabase/harvests.sql

@@ -3917,3 +3917,637 @@ WHERE
 11:51:00.318559 [info ] [MainThread]: 
 11:51:00.318852 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
 11:51:00.319231 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108294eb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10810a190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108307f40>]}
+
+
+============================== 2022-04-22 12:13:27.583412 | abec4d15-2020-4c9e-9dc1-5c6f5c00f07f ==============================
+12:13:27.583412 [info ] [MainThread]: Running with dbt=1.0.4
+12:13:27.584070 [debug] [MainThread]: running dbt with arguments Namespace(record_timing_info=None, debug=None, log_format=None, write_json=None, use_colors=None, printer_width=None, warn_error=None, version_check=None, partial_parse=None, single_threaded=False, use_experimental_parser=None, static_parser=None, profiles_dir='/Users/kkshetty/.dbt', send_anonymous_usage_stats=None, fail_fast=None, event_buffer_size=None, project_dir=None, profile=None, target=None, vars='{}', log_cache_events=False, threads=None, select=['harvests'], exclude=None, selector_name=None, state=None, defer=None, full_refresh=False, cls=<class 'dbt.task.run.RunTask'>, which='run', rpc_method='run')
+12:13:27.584201 [debug] [MainThread]: Tracking: tracking
+12:13:27.594885 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103d25ca0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103d25fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103d25d30>]}
+12:13:27.613555 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+12:13:27.613686 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+12:13:27.616800 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'abec4d15-2020-4c9e-9dc1-5c6f5c00f07f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103ef80d0>]}
+12:13:27.619573 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'abec4d15-2020-4c9e-9dc1-5c6f5c00f07f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103e22e80>]}
+12:13:27.619699 [info ] [MainThread]: Found 4 models, 4 tests, 0 snapshots, 0 analyses, 165 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+12:13:27.620302 [info ] [MainThread]: 
+12:13:27.620509 [debug] [MainThread]: Acquiring new postgres connection "master"
+12:13:27.620919 [debug] [ThreadPool]: Acquiring new postgres connection "list_dbt-testing"
+12:13:27.625941 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing"
+12:13:27.626092 [debug] [ThreadPool]: On list_dbt-testing: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "connection_name": "list_dbt-testing"} */
+
+    select distinct nspname from pg_namespace
+  
+12:13:27.626165 [debug] [ThreadPool]: Opening a new connection, currently in state init
+12:13:29.338139 [debug] [ThreadPool]: SQL status: SELECT 15 in 1.71 seconds
+12:13:29.341251 [debug] [ThreadPool]: On list_dbt-testing: Close
+12:13:29.343500 [debug] [ThreadPool]: Acquiring new postgres connection "list_dbt-testing_public"
+12:13:29.344047 [debug] [ThreadPool]: Acquiring new postgres connection "list_dbt-testing_public_metabase"
+12:13:29.350853 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing_public"
+12:13:29.352824 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing_public_metabase"
+12:13:29.353054 [debug] [ThreadPool]: On list_dbt-testing_public: BEGIN
+12:13:29.353208 [debug] [ThreadPool]: On list_dbt-testing_public_metabase: BEGIN
+12:13:29.353344 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+12:13:29.353480 [debug] [ThreadPool]: Opening a new connection, currently in state init
+12:13:31.013733 [debug] [ThreadPool]: SQL status: BEGIN in 1.66 seconds
+12:13:31.014243 [debug] [ThreadPool]: SQL status: BEGIN in 1.66 seconds
+12:13:31.014677 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing_public"
+12:13:31.014904 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing_public_metabase"
+12:13:31.015099 [debug] [ThreadPool]: On list_dbt-testing_public: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "connection_name": "list_dbt-testing_public"} */
+select
+      'dbt-testing' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'dbt-testing' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+12:13:31.015280 [debug] [ThreadPool]: On list_dbt-testing_public_metabase: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "connection_name": "list_dbt-testing_public_metabase"} */
+select
+      'dbt-testing' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_metabase'
+    union all
+    select
+      'dbt-testing' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_metabase'
+  
+12:13:31.225434 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.21 seconds
+12:13:31.226114 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.21 seconds
+12:13:31.230259 [debug] [ThreadPool]: On list_dbt-testing_public: ROLLBACK
+12:13:31.232529 [debug] [ThreadPool]: On list_dbt-testing_public_metabase: ROLLBACK
+12:13:31.440316 [debug] [ThreadPool]: On list_dbt-testing_public_metabase: Close
+12:13:31.440789 [debug] [ThreadPool]: On list_dbt-testing_public: Close
+12:13:31.451539 [debug] [MainThread]: Using postgres connection "master"
+12:13:31.451847 [debug] [MainThread]: On master: BEGIN
+12:13:31.452023 [debug] [MainThread]: Opening a new connection, currently in state init
+12:13:33.850656 [debug] [MainThread]: SQL status: BEGIN in 2.4 seconds
+12:13:33.851738 [debug] [MainThread]: Using postgres connection "master"
+12:13:33.852130 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+12:13:34.231259 [debug] [MainThread]: SQL status: SELECT 1 in 0.38 seconds
+12:13:34.235249 [debug] [MainThread]: On master: ROLLBACK
+12:13:34.441599 [debug] [MainThread]: Using postgres connection "master"
+12:13:34.442707 [debug] [MainThread]: On master: BEGIN
+12:13:34.855365 [debug] [MainThread]: SQL status: BEGIN in 0.41 seconds
+12:13:34.856343 [debug] [MainThread]: On master: COMMIT
+12:13:34.856618 [debug] [MainThread]: Using postgres connection "master"
+12:13:34.856838 [debug] [MainThread]: On master: COMMIT
+12:13:35.062364 [debug] [MainThread]: SQL status: COMMIT in 0.21 seconds
+12:13:35.063480 [debug] [MainThread]: On master: Close
+12:13:35.065021 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+12:13:35.065794 [info ] [MainThread]: 
+12:13:35.073657 [debug] [Thread-1  ]: Began running node model.dbt_test.harvests
+12:13:35.074227 [info ] [Thread-1  ]: 1 of 1 START incremental model public_metabase.harvests......................... [RUN]
+12:13:35.074834 [debug] [Thread-1  ]: Acquiring new postgres connection "model.dbt_test.harvests"
+12:13:35.075034 [debug] [Thread-1  ]: Began compiling node model.dbt_test.harvests
+12:13:35.075252 [debug] [Thread-1  ]: Compiling model.dbt_test.harvests
+12:13:35.078899 [debug] [Thread-1  ]: Writing injected SQL for node "model.dbt_test.harvests"
+12:13:35.079593 [debug] [Thread-1  ]: finished collecting timing info
+12:13:35.079795 [debug] [Thread-1  ]: Began executing node model.dbt_test.harvests
+12:13:35.118101 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:13:35.118272 [debug] [Thread-1  ]: On model.dbt_test.harvests: BEGIN
+12:13:35.118363 [debug] [Thread-1  ]: Opening a new connection, currently in state closed
+12:13:37.505249 [debug] [Thread-1  ]: SQL status: BEGIN in 2.39 seconds
+12:13:37.506065 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:13:37.506528 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+        delete from "dbt-testing"."public_metabase"."harvests" where id not in (select id from marvin_gcppsql_public.harvests where _fivetran_deleted IS NULL)
+      
+12:13:37.715099 [debug] [Thread-1  ]: SQL status: DELETE 0 in 0.21 seconds
+12:13:37.730989 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:13:37.731270 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+    
+
+  create temporary table "harvests__dbt_tmp174335108499"
+  as (
+    
+
+
+SELECT
+    id,
+    display_id,
+    farmer_id,
+    created_by,
+    moisture_level,
+    base_price,
+    grade,
+    grade_price_adjustment,
+    net_price,
+    gross_weight,
+    total_bags,
+    provided_bags,
+    gross_value,
+    provided_bag_cost,
+    outstanding_loan_amount_at_harvest,
+    loan_repayment_amount,
+    net_payout AS farmer_net_payout,
+    loan_deferral_amount,
+    created_at,
+    updated_at,
+    dispatch_id,
+    confirmed_at,
+    force_confirmed_by
+FROM
+    marvin_gcppsql_public.harvests
+WHERE
+    _fivetran_deleted IS NULL
+  );
+  
+12:13:38.406228 [debug] [Thread-1  ]: SQL status: SELECT 900 in 0.67 seconds
+12:13:38.416011 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:13:38.416200 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from INFORMATION_SCHEMA.columns
+      where table_name = 'harvests__dbt_tmp174335108499'
+        
+      order by ordinal_position
+
+  
+12:13:38.629986 [debug] [Thread-1  ]: SQL status: SELECT 23 in 0.21 seconds
+12:13:38.640787 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:13:38.641133 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "dbt-testing".INFORMATION_SCHEMA.columns
+      where table_name = 'harvests'
+        
+        and table_schema = 'public_metabase'
+        
+      order by ordinal_position
+
+  
+12:13:38.852912 [debug] [Thread-1  ]: SQL status: SELECT 23 in 0.21 seconds
+12:13:38.867688 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:13:38.867959 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "dbt-testing".INFORMATION_SCHEMA.columns
+      where table_name = 'harvests'
+        
+        and table_schema = 'public_metabase'
+        
+      order by ordinal_position
+
+  
+12:13:39.079474 [debug] [Thread-1  ]: SQL status: SELECT 23 in 0.21 seconds
+12:13:39.095452 [debug] [Thread-1  ]: Writing runtime SQL for node "model.dbt_test.harvests"
+12:13:39.096278 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:13:39.096462 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+      
+    delete from "dbt-testing"."public_metabase"."harvests"
+    where (id) in (
+        select (id)
+        from "harvests__dbt_tmp174335108499"
+    );
+    
+
+    insert into "dbt-testing"."public_metabase"."harvests" ("id", "display_id", "farmer_id", "created_by", "moisture_level", "base_price", "grade", "grade_price_adjustment", "net_price", "gross_weight", "total_bags", "provided_bags", "gross_value", "provided_bag_cost", "outstanding_loan_amount_at_harvest", "loan_repayment_amount", "farmer_net_payout", "loan_deferral_amount", "created_at", "updated_at", "dispatch_id", "confirmed_at", "force_confirmed_by")
+    (
+        select "id", "display_id", "farmer_id", "created_by", "moisture_level", "base_price", "grade", "grade_price_adjustment", "net_price", "gross_weight", "total_bags", "provided_bags", "gross_value", "provided_bag_cost", "outstanding_loan_amount_at_harvest", "loan_repayment_amount", "farmer_net_payout", "loan_deferral_amount", "created_at", "updated_at", "dispatch_id", "confirmed_at", "force_confirmed_by"
+        from "harvests__dbt_tmp174335108499"
+    )
+  
+12:13:39.306604 [debug] [Thread-1  ]: SQL status: INSERT 0 900 in 0.21 seconds
+12:13:39.317058 [debug] [Thread-1  ]: On model.dbt_test.harvests: COMMIT
+12:13:39.317313 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:13:39.317487 [debug] [Thread-1  ]: On model.dbt_test.harvests: COMMIT
+12:13:39.525592 [debug] [Thread-1  ]: SQL status: COMMIT in 0.21 seconds
+12:13:39.527000 [debug] [Thread-1  ]: finished collecting timing info
+12:13:39.527313 [debug] [Thread-1  ]: On model.dbt_test.harvests: Close
+12:13:39.528314 [debug] [Thread-1  ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'abec4d15-2020-4c9e-9dc1-5c6f5c00f07f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103f92c10>]}
+12:13:39.529007 [info ] [Thread-1  ]: 1 of 1 OK created incremental model public_metabase.harvests.................... [[32mINSERT 0 900[0m in 4.45s]
+12:13:39.529448 [debug] [Thread-1  ]: Finished running node model.dbt_test.harvests
+12:13:39.531447 [debug] [MainThread]: Acquiring new postgres connection "master"
+12:13:39.531843 [debug] [MainThread]: Using postgres connection "master"
+12:13:39.532076 [debug] [MainThread]: On master: BEGIN
+12:13:39.532264 [debug] [MainThread]: Opening a new connection, currently in state closed
+12:13:41.217633 [debug] [MainThread]: SQL status: BEGIN in 1.69 seconds
+12:13:41.217994 [debug] [MainThread]: On master: COMMIT
+12:13:41.218176 [debug] [MainThread]: Using postgres connection "master"
+12:13:41.218333 [debug] [MainThread]: On master: COMMIT
+12:13:41.491332 [debug] [MainThread]: SQL status: COMMIT in 0.27 seconds
+12:13:41.491890 [debug] [MainThread]: On master: Close
+12:13:41.492587 [info ] [MainThread]: 
+12:13:41.492984 [info ] [MainThread]: Finished running 1 incremental model in 13.87s.
+12:13:41.493358 [debug] [MainThread]: Connection 'master' was properly closed.
+12:13:41.493541 [debug] [MainThread]: Connection 'model.dbt_test.harvests' was properly closed.
+12:13:41.493715 [debug] [MainThread]: Connection 'list_dbt-testing_public_metabase' was properly closed.
+12:13:41.499954 [info ] [MainThread]: 
+12:13:41.500313 [info ] [MainThread]: [32mCompleted successfully[0m
+12:13:41.500804 [info ] [MainThread]: 
+12:13:41.501118 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+12:13:41.501510 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103fa0fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103facee0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103ec8460>]}
+
+
+============================== 2022-04-22 12:25:46.611764 | 2826fd31-0db7-44ea-90d9-e6b162f5f0a5 ==============================
+12:25:46.611764 [info ] [MainThread]: Running with dbt=1.0.4
+12:25:46.612147 [debug] [MainThread]: running dbt with arguments Namespace(record_timing_info=None, debug=None, log_format=None, write_json=None, use_colors=None, printer_width=None, warn_error=None, version_check=None, partial_parse=None, single_threaded=False, use_experimental_parser=None, static_parser=None, profiles_dir='/Users/kkshetty/.dbt', send_anonymous_usage_stats=None, fail_fast=None, event_buffer_size=None, project_dir=None, profile=None, target=None, vars='{}', log_cache_events=False, threads=None, select=['harvests'], exclude=None, selector_name=None, state=None, defer=None, full_refresh=False, cls=<class 'dbt.task.run.RunTask'>, which='run', rpc_method='run')
+12:25:46.612282 [debug] [MainThread]: Tracking: tracking
+12:25:46.620283 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107edaa90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107edabb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107edabe0>]}
+12:25:46.638715 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+12:25:46.638866 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+12:25:46.642398 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '2826fd31-0db7-44ea-90d9-e6b162f5f0a5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1080950d0>]}
+12:25:46.645278 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '2826fd31-0db7-44ea-90d9-e6b162f5f0a5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108069040>]}
+12:25:46.645413 [info ] [MainThread]: Found 4 models, 4 tests, 0 snapshots, 0 analyses, 165 macros, 0 operations, 0 seed files, 0 sources, 0 exposures, 0 metrics
+12:25:46.645997 [info ] [MainThread]: 
+12:25:46.646210 [debug] [MainThread]: Acquiring new postgres connection "master"
+12:25:46.646612 [debug] [ThreadPool]: Acquiring new postgres connection "list_dbt-testing"
+12:25:46.651426 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing"
+12:25:46.651581 [debug] [ThreadPool]: On list_dbt-testing: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "connection_name": "list_dbt-testing"} */
+
+    select distinct nspname from pg_namespace
+  
+12:25:46.651650 [debug] [ThreadPool]: Opening a new connection, currently in state init
+12:25:48.347736 [debug] [ThreadPool]: SQL status: SELECT 15 in 1.7 seconds
+12:25:48.352326 [debug] [ThreadPool]: On list_dbt-testing: Close
+12:25:48.355258 [debug] [ThreadPool]: Acquiring new postgres connection "list_dbt-testing_public_metabase"
+12:25:48.355796 [debug] [ThreadPool]: Acquiring new postgres connection "list_dbt-testing_public"
+12:25:48.365307 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing_public_metabase"
+12:25:48.367383 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing_public"
+12:25:48.367663 [debug] [ThreadPool]: On list_dbt-testing_public_metabase: BEGIN
+12:25:48.367863 [debug] [ThreadPool]: On list_dbt-testing_public: BEGIN
+12:25:48.368034 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+12:25:48.368206 [debug] [ThreadPool]: Opening a new connection, currently in state init
+12:25:50.036268 [debug] [ThreadPool]: SQL status: BEGIN in 1.67 seconds
+12:25:50.037022 [debug] [ThreadPool]: SQL status: BEGIN in 1.67 seconds
+12:25:50.037608 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing_public"
+12:25:50.038015 [debug] [ThreadPool]: Using postgres connection "list_dbt-testing_public_metabase"
+12:25:50.038311 [debug] [ThreadPool]: On list_dbt-testing_public: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "connection_name": "list_dbt-testing_public"} */
+select
+      'dbt-testing' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'dbt-testing' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+12:25:50.038583 [debug] [ThreadPool]: On list_dbt-testing_public_metabase: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "connection_name": "list_dbt-testing_public_metabase"} */
+select
+      'dbt-testing' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_metabase'
+    union all
+    select
+      'dbt-testing' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_metabase'
+  
+12:25:50.248022 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.21 seconds
+12:25:50.248758 [debug] [ThreadPool]: SQL status: SELECT 1 in 0.21 seconds
+12:25:50.252778 [debug] [ThreadPool]: On list_dbt-testing_public: ROLLBACK
+12:25:50.255101 [debug] [ThreadPool]: On list_dbt-testing_public_metabase: ROLLBACK
+12:25:50.462545 [debug] [ThreadPool]: On list_dbt-testing_public: Close
+12:25:50.463076 [debug] [ThreadPool]: On list_dbt-testing_public_metabase: Close
+12:25:50.471967 [debug] [MainThread]: Using postgres connection "master"
+12:25:50.472368 [debug] [MainThread]: On master: BEGIN
+12:25:50.472557 [debug] [MainThread]: Opening a new connection, currently in state init
+12:25:52.717009 [debug] [MainThread]: SQL status: BEGIN in 2.24 seconds
+12:25:52.718126 [debug] [MainThread]: Using postgres connection "master"
+12:25:52.718499 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+12:25:53.095173 [debug] [MainThread]: SQL status: SELECT 1 in 0.38 seconds
+12:25:53.099082 [debug] [MainThread]: On master: ROLLBACK
+12:25:53.305660 [debug] [MainThread]: Using postgres connection "master"
+12:25:53.306562 [debug] [MainThread]: On master: BEGIN
+12:25:54.263766 [debug] [MainThread]: SQL status: BEGIN in 0.96 seconds
+12:25:54.264997 [debug] [MainThread]: On master: COMMIT
+12:25:54.265426 [debug] [MainThread]: Using postgres connection "master"
+12:25:54.265807 [debug] [MainThread]: On master: COMMIT
+12:25:54.472305 [debug] [MainThread]: SQL status: COMMIT in 0.21 seconds
+12:25:54.473392 [debug] [MainThread]: On master: Close
+12:25:54.474650 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+12:25:54.475317 [info ] [MainThread]: 
+12:25:54.483756 [debug] [Thread-1  ]: Began running node model.dbt_test.harvests
+12:25:54.484222 [info ] [Thread-1  ]: 1 of 1 START incremental model public_metabase.harvests......................... [RUN]
+12:25:54.484832 [debug] [Thread-1  ]: Acquiring new postgres connection "model.dbt_test.harvests"
+12:25:54.485038 [debug] [Thread-1  ]: Began compiling node model.dbt_test.harvests
+12:25:54.485247 [debug] [Thread-1  ]: Compiling model.dbt_test.harvests
+12:25:54.488734 [debug] [Thread-1  ]: Writing injected SQL for node "model.dbt_test.harvests"
+12:25:54.489824 [debug] [Thread-1  ]: finished collecting timing info
+12:25:54.490036 [debug] [Thread-1  ]: Began executing node model.dbt_test.harvests
+12:25:54.530346 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:25:54.530532 [debug] [Thread-1  ]: On model.dbt_test.harvests: BEGIN
+12:25:54.530632 [debug] [Thread-1  ]: Opening a new connection, currently in state closed
+12:25:56.692434 [debug] [Thread-1  ]: SQL status: BEGIN in 2.16 seconds
+12:25:56.693682 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:25:56.694103 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+        delete from "dbt-testing"."public_metabase"."harvests" where id not in (select id from marvin_gcppsql_public.harvests where _fivetran_deleted IS NULL)
+      
+12:25:56.902306 [debug] [Thread-1  ]: SQL status: DELETE 2 in 0.21 seconds
+12:25:56.917865 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:25:56.918170 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+    
+
+  create temporary table "harvests__dbt_tmp175554520567"
+  as (
+    
+
+
+SELECT
+    id,
+    display_id,
+    farmer_id,
+    created_by,
+    moisture_level,
+    base_price,
+    grade,
+    grade_price_adjustment,
+    net_price,
+    gross_weight,
+    total_bags,
+    provided_bags,
+    gross_value,
+    provided_bag_cost,
+    outstanding_loan_amount_at_harvest,
+    loan_repayment_amount,
+    net_payout AS farmer_net_payout,
+    loan_deferral_amount,
+    created_at,
+    updated_at,
+    dispatch_id,
+    confirmed_at,
+    force_confirmed_by
+FROM
+    marvin_gcppsql_public.harvests
+WHERE
+    _fivetran_deleted IS NULL
+  );
+  
+12:25:57.566645 [debug] [Thread-1  ]: SQL status: SELECT 898 in 0.65 seconds
+12:25:57.583531 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:25:57.583922 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from INFORMATION_SCHEMA.columns
+      where table_name = 'harvests__dbt_tmp175554520567'
+        
+      order by ordinal_position
+
+  
+12:25:57.797866 [debug] [Thread-1  ]: SQL status: SELECT 23 in 0.21 seconds
+12:25:57.810374 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:25:57.810629 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "dbt-testing".INFORMATION_SCHEMA.columns
+      where table_name = 'harvests'
+        
+        and table_schema = 'public_metabase'
+        
+      order by ordinal_position
+
+  
+12:25:58.021754 [debug] [Thread-1  ]: SQL status: SELECT 23 in 0.21 seconds
+12:25:58.035125 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:25:58.035354 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+      select
+          column_name,
+          data_type,
+          character_maximum_length,
+          numeric_precision,
+          numeric_scale
+
+      from "dbt-testing".INFORMATION_SCHEMA.columns
+      where table_name = 'harvests'
+        
+        and table_schema = 'public_metabase'
+        
+      order by ordinal_position
+
+  
+12:25:58.248242 [debug] [Thread-1  ]: SQL status: SELECT 23 in 0.21 seconds
+12:25:58.266430 [debug] [Thread-1  ]: Writing runtime SQL for node "model.dbt_test.harvests"
+12:25:58.267314 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:25:58.267518 [debug] [Thread-1  ]: On model.dbt_test.harvests: /* {"app": "dbt", "dbt_version": "1.0.4", "profile_name": "dbt_test", "target_name": "dev", "node_id": "model.dbt_test.harvests"} */
+
+      
+    delete from "dbt-testing"."public_metabase"."harvests"
+    where (id) in (
+        select (id)
+        from "harvests__dbt_tmp175554520567"
+    );
+    
+
+    insert into "dbt-testing"."public_metabase"."harvests" ("id", "display_id", "farmer_id", "created_by", "moisture_level", "base_price", "grade", "grade_price_adjustment", "net_price", "gross_weight", "total_bags", "provided_bags", "gross_value", "provided_bag_cost", "outstanding_loan_amount_at_harvest", "loan_repayment_amount", "farmer_net_payout", "loan_deferral_amount", "created_at", "updated_at", "dispatch_id", "confirmed_at", "force_confirmed_by")
+    (
+        select "id", "display_id", "farmer_id", "created_by", "moisture_level", "base_price", "grade", "grade_price_adjustment", "net_price", "gross_weight", "total_bags", "provided_bags", "gross_value", "provided_bag_cost", "outstanding_loan_amount_at_harvest", "loan_repayment_amount", "farmer_net_payout", "loan_deferral_amount", "created_at", "updated_at", "dispatch_id", "confirmed_at", "force_confirmed_by"
+        from "harvests__dbt_tmp175554520567"
+    )
+  
+12:25:58.477146 [debug] [Thread-1  ]: SQL status: INSERT 0 898 in 0.21 seconds
+12:25:58.490005 [debug] [Thread-1  ]: On model.dbt_test.harvests: COMMIT
+12:25:58.490269 [debug] [Thread-1  ]: Using postgres connection "model.dbt_test.harvests"
+12:25:58.490444 [debug] [Thread-1  ]: On model.dbt_test.harvests: COMMIT
+12:25:58.698199 [debug] [Thread-1  ]: SQL status: COMMIT in 0.21 seconds
+12:25:58.699875 [debug] [Thread-1  ]: finished collecting timing info
+12:25:58.700274 [debug] [Thread-1  ]: On model.dbt_test.harvests: Close
+12:25:58.701373 [debug] [Thread-1  ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '2826fd31-0db7-44ea-90d9-e6b162f5f0a5', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107ef7a30>]}
+12:25:58.702266 [info ] [Thread-1  ]: 1 of 1 OK created incremental model public_metabase.harvests.................... [[32mINSERT 0 898[0m in 4.22s]
+12:25:58.702942 [debug] [Thread-1  ]: Finished running node model.dbt_test.harvests
+12:25:58.705407 [debug] [MainThread]: Acquiring new postgres connection "master"
+12:25:58.705835 [debug] [MainThread]: Using postgres connection "master"
+12:25:58.706024 [debug] [MainThread]: On master: BEGIN
+12:25:58.706201 [debug] [MainThread]: Opening a new connection, currently in state closed
+12:26:00.366213 [debug] [MainThread]: SQL status: BEGIN in 1.66 seconds
+12:26:00.367443 [debug] [MainThread]: On master: COMMIT
+12:26:00.367823 [debug] [MainThread]: Using postgres connection "master"
+12:26:00.368092 [debug] [MainThread]: On master: COMMIT
+12:26:00.575353 [debug] [MainThread]: SQL status: COMMIT in 0.21 seconds
+12:26:00.576570 [debug] [MainThread]: On master: Close
+12:26:00.577898 [info ] [MainThread]: 
+12:26:00.578459 [info ] [MainThread]: Finished running 1 incremental model in 13.93s.
+12:26:00.578954 [debug] [MainThread]: Connection 'master' was properly closed.
+12:26:00.579273 [debug] [MainThread]: Connection 'model.dbt_test.harvests' was properly closed.
+12:26:00.579477 [debug] [MainThread]: Connection 'list_dbt-testing_public' was properly closed.
+12:26:00.587257 [info ] [MainThread]: 
+12:26:00.587787 [info ] [MainThread]: [32mCompleted successfully[0m
+12:26:00.588447 [info ] [MainThread]: 
+12:26:00.588796 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+12:26:00.589202 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108134d00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108134eb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10812e8b0>]}
