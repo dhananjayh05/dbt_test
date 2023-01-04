@@ -38,3 +38,6 @@ models:
       +materialized: view
     metabase:
       +schema: metabase
+    airbyte:
+      +schema: dbt_test
+      +materialized: table

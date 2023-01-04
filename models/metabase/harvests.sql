@@ -3,7 +3,7 @@
         schema='metabase',
         materialized='incremental',
         unique_key='id',
-        pre_hook="delete from {{ this }} where id not in (select id from marvin_gcppsql_public.harvests where _fivetran_deleted IS NULL)" 
+        post_hook="delete from {{ this }} where id not in (select id from marvin_gcppsql_public.harvests where _fivetran_deleted IS NULL)" 
     )
 }}
 
