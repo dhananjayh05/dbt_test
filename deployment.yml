@@ -25,9 +25,9 @@ jobs:
 #        command: dbt run
 
 
- - name: 'Metabase Harvest Import'
+ - name: 'dbt test'
    targetName: dev
    schedule: '*/30 * * * *' 
    steps:
      - name: run models
-       command: dbt run --models harvests
+       command: dbt run --models dbt_test_model_1
