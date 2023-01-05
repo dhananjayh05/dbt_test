@@ -2,7 +2,7 @@
 
 with final as (
     select
-        *
+        max(age)
     from
         test.sheet1
 )
