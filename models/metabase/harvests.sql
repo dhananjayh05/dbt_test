@@ -1,15 +1,15 @@
 {{ config(materialized='table') }}
 
-with source_data as (
+with final as (
 
-    SELECT
-	    *
-    FROM
-	    marvin_gcppsql_public.dispatches
-    WHERE
-	    adjustments > 0
+    select
+        avg(weight) as avg_weight
+    from
+        test.sheet1
 
 )
 
-select *
-from source_data
+select
+    *
+from
+    final
